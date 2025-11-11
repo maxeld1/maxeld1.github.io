@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Max Eldabbas • Software Developer</title>
+    <meta name="description" content="Portfolio of Max Eldabbas — software engineer with experience in Java, Python, JavaScript, and data‑driven applications."/>
+    <meta property="og:title" content="Max Eldabbas • Software Developer" />
+    <meta property="og:description" content="Projects, experience, skills, and contact." />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0b1020;
+            --text:#e6eef7;
+            --muted:#97a3b6;
+            --card:rgba(255,255,255,.06);
+            --stroke:rgba(255,255,255,.12);
+            --accent:#7dd3fc; /* sky-300 */
+            --accent-strong:#38bdf8; /* sky-400 */
+            --chip:#1e293b; /* slate-800 */
+            --shadow:0 10px 30px rgba(0,0,0,.25);
+            --radius:16px;
+        }
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 80% -10%, rgba(56,189,248,.20), transparent 50%), radial-gradient(1000px 600px at -10% 0%, rgba(14,165,233,.18), transparent 50%), var(--bg);color:var(--text)}
+        a{color:var(--accent-strong);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .container{max-width:1120px;margin:0 auto;padding:28px}
+        header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(11,16,32,.92), rgba(11,16,32,.75));backdrop-filter:saturate(1.4) blur(6px);border-bottom:1px solid var(--stroke)}
+        .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+        .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
+        .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-strong));box-shadow:0 0 12px rgba(56,189,248,.7)}
+        .links{display:flex;flex-wrap:wrap;gap:14px}
+        .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--stroke);border-radius:999px;background:rgba(255,255,255,.04)}
+        .pill:hover{border-color:rgba(125,211,252,.4)}
+
+        /* Hero */
+        .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
+        .card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow)}
+        .hero .card{padding:32px}
+        .title{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
+        .subtitle{color:var(--muted);font-size:clamp(16px,2.2vw,18px);margin:0 0 16px}
+        .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+        .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));color:var(--text);font-weight:600}
+        .btn.primary{background:linear-gradient(180deg, rgba(56,189,248,.35), rgba(56,189,248,.18));border-color:rgba(56,189,248,.45)}
+        .btn:hover{transform:translateY(-1px)}
+        .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(125,211,252,.14);border:1px solid rgba(125,211,252,.35);color:#cff0ff;padding:6px 10px;border-radius:999px;font-size:13px}
+
+        /* Sections */
+        section{padding:28px 0}
+        h2.section{font-size:22px;margin:0 0 18px}
+        .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+        .col-4{grid-column:span 4}
+        .col-6{grid-column:span 6}
+        .col-8{grid-column:span 8}
+        .col-12{grid-column:span 12}
+
+        /* About */
+        .prose p{margin:0 0 10px;color:#d6e2f0}
+
+        /* Chips */
+        .chips{display:flex;flex-wrap:wrap;gap:8px}
+        .chip{padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--stroke);font-size:13px;color:#d4e4f7}
+
+        /* Cards */
+        .item{padding:18px;border-radius:14px;border:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
+        .item h3{margin:0 0 6px;font-size:16px}
+        .item p{margin:0;color:#c9daee}
+        .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+        .meta .tag{font-size:12px;color:#b8c8dc;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px}
+
+        /* Timeline */
+        .timeline{position:relative;padding-left:22px}
+        .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent-strong), transparent)}
+        .t-item{position:relative;margin:0 0 16px}
+        .t-item::before{content:"";position:absolute;left:-14px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent-strong);box-shadow:0 0 0 3px rgba(56,189,248,.2)}
+        .t-item h3{margin:0 0 4px;font-size:15px}
+        .t-item .where{color:#bed7ee;font-size:13px}
+
+        /* Footer */
+        footer{border-top:1px solid var(--stroke);margin-top:28px}
+        .foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:18px 0;color:var(--muted)}
+
+        /* Responsive */
+        @media (max-width: 900px){
+            .hero{grid-template-columns:1fr}
+            .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container nav">
+        <div class="brand"><span class="brand-dot"></span> Max Eldabbas</div>
+        <nav class="links">
+            <a class="pill" href="#about">About</a>
+            <a class="pill" href="#skills">Skills</a>
+            <a class="pill" href="#projects">Projects</a>
+            <a class="pill" href="#experience">Experience</a>
+            <a class="pill" href="#education">Education</a>
+            <a class="pill" href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="card">
+            <div class="badge">Open to Software Engineer roles</div>
+            <h1 class="title">Building data‑driven tools & accessible web apps</h1>
+            <p class="subtitle">Results‑driven developer with 2+ years building Java, Python, and JavaScript solutions for research and healthcare. Master’s candidate in Computer & Information Technology at the University of Pennsylvania.</p>
+            <div class="cta">
+                <a class="btn primary" href="#projects">View Projects</a>
+                <a class="btn" href="#contact">Get in touch</a>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="section" style="margin-top:0">Quick facts</h2>
+            <div class="chips" style="margin-bottom:10px">
+                <span class="chip">Java</span>
+                <span class="chip">Python</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">SQL</span>
+                <span class="chip">C</span>
+                <span class="chip">R</span>
+                <span class="chip">HTML/CSS</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Git</span>
+                <span class="chip">AWS (basics)</span>
+            </div>
+            <div class="chips">
+                <span class="chip">pandas</span>
+                <span class="chip">NumPy</span>
+                <span class="chip">Matplotlib</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">React (basic)</span>
+                <span class="chip">REST APIs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="grid">
+        <div class="col-8 card" style="padding:22px">
+            <h2 class="section">About me</h2>
+            <div class="prose">
+                <p>I’m a software engineer focused on elegant, pragmatic solutions. I build data pipelines, automation, and front‑end interfaces that make complex workflows simple and accessible. Recent work spans custom Java tooling for laboratory automation, interactive web exhibits at the intersection of research and design, and machine‑learning‑powered analyses.</p>
+                <p>I care about code quality, UX, and reproducibility. I enjoy collaborating across disciplines to ship features that matter.</p>
+            </div>
+        </div>
+        <aside class="col-4 card" style="padding:22px">
+            <h2 class="section">Highlights</h2>
+            <div class="item">
+                <h3>50% efficiency lift</h3>
+                <p>Automated parsing, analysis, and document generation for a research core using Java.</p>
+            </div>
+            <div class="item" style="margin-top:10px">
+                <h3>Accessible by default</h3>
+                <p>Built responsive, inclusive front‑end components for a survivor‑support exhibit.</p>
+            </div>
+        </aside>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="grid">
+        <div class="col-12">
+            <h2 class="section">Skills</h2>
+        </div>
+        <div class="col-6 card" style="padding:18px">
+            <h3 style="margin-top:0">Languages & Frameworks</h3>
+            <div class="chips">
+                <span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">C</span><span class="chip">R</span>
+                <span class="chip">Node.js</span><span class="chip">React (basic)</span><span class="chip">Vue (basic)</span>
+            </div>
+        </div>
+        <div class="col-6 card" style="padding:18px">
+            <h3 style="margin-top:0">Libraries & Tools</h3>
+            <div class="chips">
+                <span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span>
+                <span class="chip">Docker</span><span class="chip">Git</span><span class="chip">AWS (basics)</span>
+                <span class="chip">LaTeX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section">Selected projects</h2>
+        <div class="grid">
+            <article class="col-6 item">
+                <h3>Healing in Color — Interactive Exhibit</h3>
+                <p>Collaborated with researchers/designers to build an accessible virtual exhibit supporting LGBTQ+ survivors using HTML, CSS, and JavaScript.</p>
+                <div class="meta">
+                    <span class="tag">HTML/CSS/JS</span>
+                    <a class="tag" href="https://discover.ourwave.org/exhibit/healing-in-color" target="_blank" rel="noopener">Live site ↗</a>
+                </div>
+            </article>
+            <article class="col-6 item">
+                <h3>Penn‑Shredder — Custom Shell</h3>
+                <p>Implemented a C shell with process control, runtime limits, and dual‑stage pipeline/redirection for robust task execution.</p>
+                <div class="meta">
+                    <span class="tag">C</span>
+                    <span class="tag">Systems</span>
+                </div>
+            </article>
+            <article class="col-6 item">
+                <h3>OpenDataPhilly Analysis</h3>
+                <p>Java application that ingests messy CSV/JSON datasets, cleans them, and computes demographic and real‑estate metrics.</p>
+                <div class="meta">
+                    <span class="tag">Java</span>
+                    <span class="tag">CSV/JSON</span>
+                </div>
+            </article>
+            <article class="col-6 item">
+                <h3>Laboratory Automation</h3>
+                <p>Java tooling to parse unstructured order data, generate Word/Excel artefacts, and automate calculations — improving throughput by ~50%.</p>
+                <div class="meta">
+                    <span class="tag">Java</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </article>
+            <article class="col-6 item">
+                <h3>Tweet Analyzer</h3>
+                <p>Analyzes large‑scale Twitter data to identify flu‑related content by state, using N‑tier architecture and Singleton pattern.</p>
+                <div class="meta">
+                    <span class="tag">Java</span>
+                    <span class="tag">Data</span>
+                </div>
+            </article>
+            <article class="col-6 item">
+                <h3>Water Tank Game</h3>
+                <p>Python game with rule‑based bot and optimized resource‑management logic.</p>
+                <div class="meta">
+                    <span class="tag">Python</span>
+                    <span class="tag">Algorithms</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2 class="section">Experience</h2>
+        <div class="grid">
+            <div class="col-12 card" style="padding:18px">
+                <div class="timeline">
+                    <div class="t-item">
+                        <h3>Technical Support Volunteer • Our Wave <span class="where">(Remote) — Feb 2025 – Present</span></h3>
+                        <p>Builds responsive, accessible front‑end features; collaborates cross‑functionally with researchers and designers.</p>
+                    </div>
+                    <div class="t-item">
+                        <h3>Lab Manager & Research Specialist • University of Pennsylvania <span class="where">(Philadelphia, PA) — May 2022 – Present</span></h3>
+                        <p>Lead 20‑person research team; created Java automation tooling (50% efficiency lift); drove operational improvements (30% efficiency), data analysis, SOPs, and training.</p>
+                    </div>
+                    <div class="t-item">
+                        <h3>Patient Administrator • Little Big Health Solutions <span class="where">(Warwick, PA) — May 2022 – May 2023</span></h3>
+                        <p>Built a JavaScript data‑collection app; launched website and branding; streamlined data processing for high‑volume vaccination records.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="grid">
+        <div class="col-12 card" style="padding:18px">
+            <h2 class="section">Education</h2>
+            <div class="grid">
+                <div class="col-6 item">
+                    <h3>University of Pennsylvania — MCIT</h3>
+                    <p>Courses: Computer Systems Programming, Data Structures & Software Design, Algorithms, AI, ML, Bioinformatics.</p>
+                </div>
+                <div class="col-6 item">
+                    <h3>Penn State — B.S. Biology</h3>
+                    <p>Foundations in life sciences and quantitative analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="grid">
+        <div class="col-12 card" style="padding:18px">
+            <h2 class="section">Contact</h2>
+            <div class="grid">
+                <div class="col-8">
+                    <p style="margin:0 0 12px">Let’s build something impactful together.</p>
+                    <div class="chips">
+                        <a class="chip" href="mailto:maxeldabbas86@gmail.com">maxeldabbas86@gmail.com</a>
+                        <a class="chip" href="tel:+16105471325">(610) 547‑1325</a>
+                        <a class="chip" href="https://www.linkedin.com/in/max-eldabbas-8202a11b5/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a class="chip" href="https://github.com/maxeld1" target="_blank" rel="noopener">GitHub</a>
+                        <a class="chip" href="#" id="downloadResume">Download Résumé (PDF)</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <form class="item" style="display:flex;flex-direction:column;gap:10px">
+                        <label for="msg" style="font-size:14px;color:#cfe6fb">Quick message</label>
+                        <textarea id="msg" placeholder="Hi Max, we’re hiring for…" rows="4" style="resize:vertical;padding:10px;border-radius:10px;border:1px solid var(--stroke);background:rgba(255,255,255,.05);color:var(--text)"></textarea>
+                        <button type="button" class="btn primary" id="mailtoBtn">Open email draft</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container foot">
+            <div>© <span id="year"></span> Max Eldabbas</div>
+            <div style="display:flex;gap:10px">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<script>
+    // Year stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Email helper
+    const btn = document.getElementById('mailtoBtn');
+    btn?.addEventListener('click', () => {
+        const body = encodeURIComponent(document.getElementById('msg').value || '');
+        window.location.href = `mailto:maxeldabbas86@gmail.com?subject=Opportunity%20for%20Software%20Engineer&body=${body}`;
+    });
+
+    // Optional: serve your resume file name as /resume.pdf in same folder
+    document.getElementById('downloadResume')?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        // Change the filename below to the name you host alongside this page
+        window.location.href = 'resume_Max_Eldabbas.pdf';
+    })
+</script>
+</body>
+</html>
