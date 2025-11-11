@@ -9,20 +9,91 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {font-family:Inter, sans-serif; margin:0; background:#f9fafb; color:#111827;}
-    header {display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:white; box-shadow:0 1px 4px rgba(0,0,0,0.05); position:sticky; top:0; z-index:50;}
-    nav a {margin-left:20px; color:#2563eb; text-decoration:none; font-weight:500;}
-    nav a:hover {text-decoration:underline;}
-    main {max-width:1100px; margin:40px auto; padding:0 20px;}
-    .hero {display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:40px; background:white; padding:40px; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.05);}
-    .hero img {width:250px; height:250px; border-radius:50%; object-fit:cover; border:4px solid #e5e7eb;}
-    h1 {font-size:2.2rem; margin-bottom:10px;}
-    p.subtitle {font-size:1.1rem; color:#4b5563; margin-bottom:20px;}
-    section {margin-top:40px;}
-    h2 {color:#1e3a8a; font-size:1.5rem; margin-bottom:12px;}
-    .card {background:white; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);}
-    .grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;}
-    footer {text-align:center; padding:20px; margin-top:60px; font-size:0.9rem; color:#6b7280; border-top:1px solid #e5e7eb;}
+    :root{
+      --bg:#f7fafc;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --accent:#2563eb;      /* indigo-600 */
+      --accent-2:#22d3ee;    /* cyan-400 */
+      --accent-3:#a78bfa;    /* violet-400 */
+      --ring:rgba(37,99,235,.25);
+      --stroke:rgba(2,6,23,.08);
+      --shadow-lg:0 18px 40px rgba(2,6,23,.10);
+      --shadow-sm:0 6px 16px rgba(2,6,23,.06);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);
+      background:
+        radial-gradient(900px 400px at 80% -10%, rgba(167,139,250,.18), transparent 60%),
+        radial-gradient(700px 400px at -10% 0%, rgba(34,211,238,.16), transparent 60%),
+        linear-gradient(180deg,#ffffff,#f7fafc);}    
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid var(--stroke)}
+    .nav{max-width:1220px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand::before{content:"";width:10px;height:10px;border-radius:50%;background:conic-gradient(from 0deg,#22d3ee,#2563eb,#a78bfa,#22d3ee);box-shadow:0 0 12px rgba(37,99,235,.45)}
+    .links{display:flex;flex-wrap:wrap;gap:12px}
+    .links a{padding:8px 12px;border-radius:999px}
+    .links a:hover{background:rgba(37,99,235,.08)}
+
+    main{max-width:1220px;margin:28px auto;padding:0 20px}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
+    .card{background:var(--surface);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+    .hero .card{padding:22px}
+    .title{font-size:clamp(26px,4.4vw,42px);line-height:1.1;margin:0 0 8px}
+    .subtitle{color:var(--muted);font-size:clamp(14px,2vw,16px);margin:0 0 12px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff, #f9fbff);color:var(--text);font-weight:600}
+    .btn.primary{background:linear-gradient(180deg, rgba(37,99,235,.18), rgba(37,99,235,.10));border-color:rgba(37,99,235,.35)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 2px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:#fff;color:#0b3b86;font-size:12.5px}
+
+    /* Avatar ring */
+    .avatar-wrap{display:flex;align-items:center;justify-content:center}
+    .avatar-ring{--sz:220px;width:var(--sz);height:var(--sz);padding:6px;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent));box-shadow:0 10px 30px rgba(37,99,235,.18)}
+    .avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #fff}
+
+    /* Sections */
+    section{padding:18px 0}
+    h2.section{font-size:20px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+    h2.section::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(37,99,235,.35), transparent)}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .col-4{grid-column:span 4}
+    .col-6{grid-column:span 6}
+    .col-8{grid-column:span 8}
+    .col-12{grid-column:span 12}
+
+    .item{padding:14px;border-radius:12px;border:1px solid var(--stroke);background:#fff;transition:transform .2s ease, box-shadow .2s ease}
+    .item:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .meta .tag{font-size:12px;color:#0f172a;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px;background:#f8fafc}
+
+    /* Projects grid density */
+    #projects .grid > .col-6.item{grid-column:span 4}
+    @media (min-width:1400px){#projects .grid > .col-6.item{grid-column:span 3}}
+
+    /* Contact */
+    .contact-cta{position:sticky;bottom:16px;display:flex;gap:10px;justify-content:center;margin-top:14px}
+    .contact-cta .btn{box-shadow:0 8px 16px rgba(37,99,235,.18)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--stroke);margin-top:28px;color:var(--muted)}
+    .foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 0}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .avatar-ring{--sz:160px}
+      .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
+    }
   </style>
 </head>
 <body>
@@ -39,23 +110,30 @@
 
   <main>
     <section class="hero">
-      <div>
-        <h1>Hi, I'm Max Eldabbas</h1>
-        <p class="subtitle">Software Developer passionate about creating data-driven, accessible, and elegant solutions. I build efficient back-end logic and modern front-end interfaces.</p>
-        <a href="#projects" style="background:#2563eb;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:500;">View Projects</a>
+      <div class="card">
+        <div class="badges">
+          <span class="badge">🚀 Open to Software Engineer roles</span>
+          <span class="badge">📍 Philadelphia / Remote</span>
+        </div>
+        <h1 class="title">Building data‑driven tools & accessible web apps</h1>
+        <p class="subtitle">Results‑driven developer with 3+ years of experience in Java, Python, and JavaScript across research and healthcare. MCIT @ Penn. I design for clarity and ship production code.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn" href="resume_Max_Eldabbas.pdf">Download Résumé</a>
+        </div>
       </div>
-      <div style="text-align:center;">
-        <img src="profile_img_max.jpg" alt="Profile picture of Max Eldabbas">
+      <div class="card avatar-wrap">
+        <div class="avatar-ring">
+          <img class="avatar" src="profile.jpg" alt="Profile picture of Max Eldabbas">
+        </div>
       </div>
     </section>
 
     <section id="about">
       <h2>About Me</h2>
       <div class="card">
-        <p>I am a Results-driven software engineer with 3+ years of experience building data-driven systems and web interfaces in research and
-          healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania.
-          Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high-impact
-          applications. Passionate about delivering elegant technical solutions to real-world problems that scale.</p>
+        <p>I am currently pursuing my Master’s in Computer and Information Technology at the University of Pennsylvania. My work bridges research, automation, and software design — from Java tooling for lab automation to building web applications that make data more intuitive and actionable.</p>
       </div>
     </section>
 
@@ -98,7 +176,7 @@
       <h2>Contact</h2>
       <div class="card" style="text-align:center;">
         <p>Email: <a href="mailto:maxeldabbas86@gmail.com">maxeldabbas86@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/max-eldabbas-m-s-8202a11b5/">linkedin.com/in/max-eldabbas-8202a11b5</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/max-eldabbas-8202a11b5/">linkedin.com/in/max-eldabbas-8202a11b5</a></p>
         <p>GitHub: <a href="https://github.com/maxeld1">github.com/maxeld1</a></p>
       </div>
     </section>
