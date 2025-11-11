@@ -1,58 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Max Eldabbas • Software Developer</title>
   <meta name="description" content="Portfolio of Max Eldabbas — software engineer with experience in Java, Python, JavaScript, and data‑driven applications."/>
+  <meta property="og:title" content="Max Eldabbas — Software Developer" />
+  <meta property="og:description" content="Building data‑driven tools & accessible web apps." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#2563eb" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f7fafc;
-      --surface:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --accent:#2563eb;      /* indigo-600 */
-      --accent-2:#22d3ee;    /* cyan-400 */
-      --accent-3:#a78bfa;    /* violet-400 */
-      --ring:rgba(37,99,235,.25);
-      --stroke:rgba(2,6,23,.08);
-      --shadow-lg:0 18px 40px rgba(2,6,23,.10);
-      --shadow-sm:0 6px 16px rgba(2,6,23,.06);
-      --radius:16px;
+      --bg:#f7fafc; --surface:#ffffff; --text:#0f172a; --muted:#475569;
+      --accent:#2563eb; --accent-2:#22d3ee; --accent-3:#a78bfa;
+      --ring:rgba(37,99,235,.25); --stroke:rgba(2,6,23,.08);
+      --shadow-lg:0 18px 40px rgba(2,6,23,.10); --shadow-sm:0 6px 16px rgba(2,6,23,.06);
+      --radius:16px; --stack:16px;
     }
+    /* Dark theme */
+    [data-theme="dark"]{ --bg:#0b1220; --surface:#0f172a; --text:#e5ecff; --muted:#95a3b8; --stroke:rgba(229,236,255,.08); --shadow-sm:none; --shadow-lg:none; }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);
       background:
         radial-gradient(900px 400px at 80% -10%, rgba(167,139,250,.18), transparent 60%),
         radial-gradient(700px 400px at -10% 0%, rgba(34,211,238,.16), transparent 60%),
-        linear-gradient(180deg,#ffffff,#f7fafc);}    
+        linear-gradient(180deg,#ffffff,var(--bg));}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
+    /* Layout */
     header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid var(--stroke)}
-    .nav{max-width:1220px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}
+    [data-theme="dark"] header{background:rgba(15,23,42,.7)}
+    .container{max-width:1220px;margin:0 auto;padding:0 20px}
+    .nav{max-width:1220px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 20px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
     .brand::before{content:"";width:10px;height:10px;border-radius:50%;background:conic-gradient(from 0deg,#22d3ee,#2563eb,#a78bfa,#22d3ee);box-shadow:0 0 12px rgba(37,99,235,.45)}
-    .links{display:flex;flex-wrap:wrap;gap:12px}
-    .links a{padding:8px 12px;border-radius:999px}
+    .links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .links a{padding:8px 10px;border-radius:999px}
     .links a:hover{background:rgba(37,99,235,.08)}
 
-    .container{max-width:1220px;margin:0 auto;padding:0 20px}
-    main{max-width:1220px;margin:28px auto;padding:0 20px}
+    main.container{margin:24px auto}
 
-    /* HERO */
+    /* Hero */
     .hero{padding:8px 0}
     .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
     .card{background:var(--surface);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
-    .hero .card{padding:22px}
+    .hero .card{padding:18px}
     .title{font-size:clamp(26px,4.4vw,42px);line-height:1.1;margin:0 0 8px}
     .subtitle{color:var(--muted);font-size:clamp(14px,2vw,16px);margin:0 0 12px}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff, #f9fbff);color:var(--text);font-weight:600;line-height:1;min-height:40px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff,#f9fbff);color:var(--text);font-weight:600;line-height:1;min-height:40px}
     .btn.primary{background:linear-gradient(180deg, rgba(37,99,235,.18), rgba(37,99,235,.10));border-color:rgba(37,99,235,.35)}
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 2px}
     .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:#fff;color:#0b3b86;font-size:12.5px}
@@ -65,37 +67,28 @@
     /* Sections */
     section{padding:18px 0}
     .section-block{margin:26px 0}
-    h2.section{font-size:20px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
-    h2.section::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(37,99,235,.35), transparent)}
     .section-head{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:20px}
     .section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(37,99,235,.35), transparent)}
 
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
     .grid-auto{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:16px}
     .project-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px,1fr));gap:16px}
-    .col-4{grid-column:span 4}
-    .col-6{grid-column:span 6}
-    .col-8{grid-column:span 8}
-    .col-12{grid-column:span 12}
 
     .item{padding:14px;border-radius:12px;border:1px solid var(--stroke);background:#fff;transition:transform .2s ease, box-shadow .2s ease}
     .item:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
     .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .meta .tag{font-size:12px;color:#0f172a;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px;background:#f8fafc}
-
-    /* Chips for modal and tags */
+    .tag{padding:4px 8px;border-radius:999px;border:1px solid var(--stroke);background:#f8fafc;font-size:12px;color:#0f172a}
     .chips{display:flex;flex-wrap:wrap;gap:8px}
     .chip{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--stroke);font-size:12.5px;color:#0f172a}
-    .tag{padding:4px 8px;border-radius:999px;border:1px solid var(--stroke);background:#f8fafc;font-size:12px;color:#0f172a}
+
+    /* PDF frame */
+    .pdf-frame{width:100%;height:min(88vh,1000px);border:1px solid var(--stroke);border-radius:12px;background:#fff;box-shadow:var(--shadow-sm)}
 
     /* Responsive */
     @media (max-width: 900px){
       .hero-grid{grid-template-columns:1fr}
       .avatar-ring{--sz:160px}
-      .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
     }
   </style>
-</head>
 </head>
 <body>
   <header>
@@ -105,62 +98,69 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#resume">Résumé</a>
+        <a href="#demos">Demos</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn" type="button" aria-label="Toggle theme">Theme</button>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="card">
-          <div class="badges">
-            <span class="badge">🚀 Open to Software Engineer roles</span>
-            <span class="badge">📍 Philadelphia / Remote</span>
-          </div>
-          <h1 class="title">Building data‑driven tools & accessible web apps</h1>
-          <p class="subtitle">Results‑driven developer with 3+ years of experience in Java, Python, and JavaScript across research and healthcare. MCIT @ Penn. I design for clarity and ship production code.</p>
-          <div class="cta">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn" href="#contact">Get in touch</a>
-            <a class="btn" href="Resume_Eldabbas_Max_2025.pdf">Download Résumé</a>
-          </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="card">
+        <div class="badges">
+          <span class="badge">🚀 Open to Software Engineer roles</span>
+          <span class="badge">📍 Philadelphia / Remote</span>
         </div>
-        <div class="card avatar-wrap">
-          <div class="avatar-ring">
-            <img class="avatar" src="profile_img_max.jpg" alt="Profile picture of Max Eldabbas" loading="lazy">
-          </div>
+        <h1 class="title">Building data‑driven tools & accessible web apps</h1>
+        <p class="subtitle">Results‑driven developer with 3+ years of experience in Java, Python, and JavaScript across research and healthcare. MCIT @ Penn. I design for clarity and ship production code.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn" href="Resume_Eldabbas_Max_2025.pdf" target="_blank" rel="noopener">Download Résumé</a>
         </div>
       </div>
-    </section>
+      <div class="card avatar-wrap">
+        <div class="avatar-ring">
+          <img class="avatar" src="profile_img_max.jpg" alt="Profile picture of Max Eldabbas" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <main class="container">
+    <!-- About -->
     <section id="about" class="section-block">
       <h2 class="section-head">About Me</h2>
-      <div class="card">
+      <div class="card" style="padding:16px">
         <p>Results‑driven software engineer with 3+ years of experience building data‑driven systems and web interfaces in research and healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania. Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high‑impact applications. Passionate about delivering elegant technical solutions to real‑world problems that scale.</p>
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills" class="section-block">
       <h2 class="section-head">Skills</h2>
       <div class="grid-auto">
-        <div class="card"><h3>Languages</h3><p>Java, Python, JavaScript, SQL, C, R, HTML, CSS</p></div>
-        <div class="card"><h3>Frameworks</h3><p>Node.js, basic React/Vue, N‑tier architecture</p></div>
-        <div class="card"><h3>Libraries & Tools</h3><p>pandas, NumPy, Matplotlib, Docker, Git, AWS, PyCharm, IntelliJ, LaTeX</p></div>
-        <div class="card"><h3>Concepts</h3><p>RESTful APIs, cloud storage basics</p></div>
+        <div class="card" style="padding:16px"><h3>Languages</h3><p>Java, Python, JavaScript, SQL, C, R, HTML, CSS</p></div>
+        <div class="card" style="padding:16px"><h3>Frameworks</h3><p>Node.js, basic React/Vue, N‑tier architecture</p></div>
+        <div class="card" style="padding:16px"><h3>Libraries & Tools</h3><p>pandas, NumPy, Matplotlib, Docker, Git, AWS, PyCharm, IntelliJ, LaTeX</p></div>
+        <div class="card" style="padding:16px"><h3>Concepts</h3><p>RESTful APIs, cloud storage basics</p></div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects" class="section-block">
       <h2 class="section-head">Projects</h2>
+      <div id="projFilters" class="chips" style="margin-bottom:10px"></div>
       <div id="projectGrid" class="project-grid"></div>
 
-      <!-- Modal -->
+      <!-- Project Modal -->
       <div id="projectModal" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.45);backdrop-filter:blur(4px);padding:20px;z-index:60">
-        <div class="modal-card" role="dialog" aria-modal="true" style="max-width:920px;width:100%;background:#fff;border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
+        <div class="modal-card" role="dialog" aria-modal="true" style="max-width:920px;width:100%;background:var(--surface);border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
           <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--stroke)">
-            <h3 id="mTitle" style="margin:0;font-size:18px;color:#0f172a"></h3>
+            <h3 id="mTitle" style="margin:0;font-size:18px"></h3>
             <button id="mClose" class="btn" style="padding:6px 10px">Close</button>
           </div>
           <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding:16px">
@@ -168,7 +168,7 @@
               <img id="mImage" alt="Project preview" loading="lazy" style="width:100%;height:360px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);background:#f8fafc"/>
             </div>
             <div>
-              <p id="mDesc" style="margin-top:0;color:#0f172a"></p>
+              <p id="mDesc" style="margin-top:0"></p>
               <div id="mTags" class="chips" style="margin:10px 0 12px"></div>
               <div id="mLinks" class="chips"></div>
             </div>
@@ -177,19 +177,56 @@
       </div>
     </section>
 
+    <!-- Résumé inline preview -->
+    <section id="resume" class="section-block">
+      <h2 class="section-head">Résumé</h2>
+      <div class="card" style="padding:16px">
+        <div class="chips" style="margin-bottom:10px">
+          <a class="btn primary" href="Resume_Eldabbas_Max_2025.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          <a class="btn" href="Resume_Eldabbas_Max_2025.pdf" download>Download PDF</a>
+        </div>
+        <iframe class="pdf-frame" src="Resume_Eldabbas_Max_2025.pdf#view=FitH&navpanes=0" title="Résumé PDF" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Demos -->
+    <section id="demos" class="section-block">
+      <h2 class="section-head">Engineering Demos</h2>
+      <div class="grid-auto">
+        <div class="card" style="padding:16px">
+          <h3 style="margin-top:0">Sorting Visualizer</h3>
+          <p style="margin-top:6px;color:var(--muted)">In‑browser algorithm demo (Bubble vs Quick). Generates random data and measures time.</p>
+          <canvas id="sortCanvas" width="520" height="160" style="width:100%;height:160px;border:1px solid var(--stroke);border-radius:8px;background:#fff"></canvas>
+          <div class="chips" style="margin-top:10px">
+            <button class="btn" id="genData" type="button">Generate</button>
+            <button class="btn primary" id="runBubble" type="button">Run Bubble</button>
+            <button class="btn" id="runQuick" type="button">Run Quick</button>
+            <span id="sortResult" class="chip" aria-live="polite">Ready</span>
+          </div>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin-top:0">GitHub Activity</h3>
+          <p style="margin-top:6px;color:var(--muted)">Latest public repositories via GitHub REST API.</p>
+          <div id="ghStatus" class="chip">Loading…</div>
+          <ul id="ghList" style="list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
     <section id="experience" class="section-block">
       <h2 class="section-head">Experience</h2>
       <div class="grid-auto">
-        <div class="card">
+        <div class="card" style="padding:16px">
           <h3>Technical Support Volunteer • Our Wave <span class="where">(Remote) — Feb 2025 – Present</span></h3>
-          <ul style="margin:6px 0 0 16px;color:#334155">
+          <ul style="margin:6px 0 0 16px;color:var(--muted)">
             <li>Contributing with researchers/designers to build accessible, engaging web features prioritizing inclusion and trauma‑informed design.</li>
             <li>Developing responsive, accessible front‑end components (HTML, CSS, JS).</li>
           </ul>
         </div>
-        <div class="card">
+        <div class="card" style="padding:16px">
           <h3>Lab Manager & Research Specialist • University of Pennsylvania <span class="where">(Philadelphia, PA) — May 2022 – Present</span></h3>
-          <ul style="margin:6px 0 0 16px;color:#334155">
+          <ul style="margin:6px 0 0 16px;color:var(--muted)">
             <li>Led 20‑person research team; ~20% improvement in research outcomes.</li>
             <li>Java automation for Human Immunology Core (Excel/Word outputs), improving processing efficiency by ~50%.</li>
             <li>Promoted to Lab Manager; documentation/ops/analytics improved lab efficiency by 30%.</li>
@@ -198,23 +235,16 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card" style="text-align:center;">
-        <p>Email: <a href="mailto:maxeldabbas86@gmail.com">maxeldabbas86@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/max-eldabbas-m-s-8202a11b5/">linkedin.com/in/max-eldabbas-8202a11b5</a></p>
-        <p>GitHub: <a href="https://github.com/maxeld1">github.com/maxeld1</a></p>
-      </div>
-    </section>
-      <section id="education" class="section-block">
+    <!-- Education -->
+    <section id="education" class="section-block">
       <h2 class="section-head">Education</h2>
       <div class="grid-auto">
-        <div class="card">
+        <div class="card" style="padding:16px">
           <h3>University of Pennsylvania — MCIT</h3>
           <p>Computer Systems Programming; Data Structures & Software Design; Algorithms & Computation; Artificial Intelligence; Machine Learning; Bioinformatics.</p>
           <p class="where">Philadelphia, PA</p>
         </div>
-        <div class="card">
+        <div class="card" style="padding:16px">
           <h3>Pennsylvania State University — B.S. Biology</h3>
           <p>Foundations in life sciences and quantitative analysis.</p>
           <p class="where">State College, PA</p>
@@ -222,43 +252,50 @@
       </div>
     </section>
 
+    <!-- Contact -->
+    <section id="contact" class="section-block">
+      <h2 class="section-head">Contact</h2>
+      <div class="card" style="text-align:center;padding:16px">
+        <p>Email: <a href="mailto:maxeldabbas86@gmail.com">maxeldabbas86@gmail.com</a> • LinkedIn: <a href="https://www.linkedin.com/in/max-eldabbas-8202a11b5/" target="_blank" rel="noopener">linkedin.com/in/max-eldabbas-8202a11b5</a> • GitHub: <a href="https://github.com/maxeld1" target="_blank" rel="noopener">github.com/maxeld1</a></p>
+      </div>
+    </section>
   </main>
 
-  <footer class="container">
-    © <span id="year"></span> Max Eldabbas
-  </footer>
+  <footer class="container" style="border-top:1px solid var(--stroke);margin-top:20px;color:var(--muted);padding:16px 0">© <span id="year"></span> Max Eldabbas</footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // THEME TOGGLE with persistence
+    (function(){
+      const root = document.documentElement;
+      const key = 'theme';
+      const btn = document.getElementById('themeToggle');
+      const set = (t)=>{ root.setAttribute('data-theme', t); localStorage.setItem(key,t); };
+      const saved = localStorage.getItem(key) || 'light';
+      if(saved==='dark') set('dark');
+      btn?.addEventListener('click', ()=> set(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+    })();
+
+    // PROJECTS DATA
     const PROJECTS = [
-      { title:'Cell Line Scheduler', year:'2025',
-        stack:['Python','PyQt6','CSV/ICS'],
-        desc:'Cross-platform desktop app that generates 293T cell split rotations with a 48-hour cadence, CSV/ICS export, Sun/Sat scheduling logic, and fair role flipping.',
-        image:'project_cell_line.jpg' },
-      { title:'Healing in Color — Interactive Exhibit', year:'2025',
-        stack:['HTML','CSS','JavaScript'],
-        desc:'Interactive virtual exhibit for LGBTQ+ survivors built for accessibility and performance.',
-        image:'project_healing_in_color.jpg',
-        links:[{label:'Live site', href:'https://discover.ourwave.org/exhibit/healing-in-color'}] },
-      { title:'Penn-Shredder (Custom Shell)', year:'2024',
-        stack:['C','Systems'],
-        desc:'Custom shell with runtime limits, dual-stage pipelines, and redirection.',
-        image:'project_shell.jpg' },
-      { title:'OpenDataPhilly Data Analysis', year:'2024',
-        stack:['Java','CSV','JSON'],
-        desc:'Java app that ingests/cleans OpenDataPhilly datasets and computes demographic/real-estate metrics.',
-        image:'project_odp.jpg' },
-      { title:'Laboratory Automation Program', year:'2024',
-        stack:['Java','Excel','Word'],
-        desc:'Parses unstructured order data; auto-generates Word/Excel; automates calculations (~50% throughput gain).',
-        image:'project_lab_auto.jpg' },
-      { title:'Tweet Analyzer', year:'2024',
-        stack:['Java','N-tier','Singleton'],
-        desc:'Identifies flu-related tweets by state; infers geography from coordinates.',
-        image:'project_tweet.jpg' }
+      { title:'Cell Line Scheduler', year:'2025', stack:['Python','PyQt6','CSV/ICS'], desc:'Cross-platform desktop app that generates 293T cell split rotations with a 48-hour cadence, CSV/ICS export, Sun/Sat scheduling logic, and fair role flipping.', image:'project_cell_line.jpg' },
+      { title:'Healing in Color — Interactive Exhibit', year:'2025', stack:['HTML','CSS','JavaScript'], desc:'Interactive virtual exhibit for LGBTQ+ survivors built for accessibility and performance.', image:'project_healing_in_color.jpg', links:[{label:'Live site', href:'https://discover.ourwave.org/exhibit/healing-in-color'}] },
+      { title:'Penn-Shredder (Custom Shell)', year:'2024', stack:['C','Systems'], desc:'Custom shell with runtime limits, dual-stage pipelines, and redirection.', image:'project_shell.jpg' },
+      { title:'OpenDataPhilly Data Analysis', year:'2024', stack:['Java','CSV','JSON'], desc:'Java app that ingests/cleans OpenDataPhilly datasets and computes demographic/real-estate metrics.', image:'project_odp.jpg' },
+      { title:'Laboratory Automation Program', year:'2024', stack:['Java','Excel','Word'], desc:'Parses unstructured order data; auto-generates Word/Excel; automates calculations (~50% throughput gain).', image:'project_lab_auto.jpg' },
+      { title:'Tweet Analyzer', year:'2024', stack:['Java','N-tier','Singleton'], desc:'Identifies flu-related tweets by state; infers geography from coordinates.', image:'project_tweet.jpg' }
     ];
-  
+
+    // Build tech filters from project stacks
+    const allTags = Array.from(new Set(PROJECTS.flatMap(p=>p.stack))).sort();
+    const projFilters = document.getElementById('projFilters');
+    let activeTags = new Set();
+    const mkChip = (t)=>{ const a=document.createElement('button'); a.className='chip'; a.type='button'; a.textContent=t; a.setAttribute('data-tag',t); a.addEventListener('click',()=>{ if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t); a.classList.toggle('active'); renderProjects(); }); return a; };
+    allTags.forEach(t=>projFilters?.appendChild(mkChip(t)));
+
+    // Render projects grid + modal behavior
     const grid = document.getElementById('projectGrid');
     const modal = document.getElementById('projectModal');
     const mTitle = document.getElementById('mTitle');
@@ -267,7 +304,7 @@
     const mTags  = document.getElementById('mTags');
     const mLinks = document.getElementById('mLinks');
     const mClose = document.getElementById('mClose');
-  
+
     function cardHTML(p){
       const tags = (p.stack||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
       return `<article class="item" role="button" tabindex="0" data-title="${p.title}">
@@ -276,8 +313,13 @@
         <div class="meta">${tags}<span class="tag">${p.year||''}</span></div>
       </article>`;
     }
-    grid.innerHTML = PROJECTS.map(cardHTML).join('');
-  
+
+    function renderProjects(){
+      const list = PROJECTS.filter(p=> activeTags.size===0 || p.stack.some(s=>activeTags.has(s)) );
+      grid.innerHTML = list.map(cardHTML).join('');
+    }
+    renderProjects();
+
     function openModal(p){
       mTitle.textContent = p.title;
       mDesc.textContent  = p.desc;
@@ -298,10 +340,36 @@
       }
     });
     function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
-    mClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    mClose?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // SORTING VISUALIZER
+    const cvs = document.getElementById('sortCanvas');
+    const ctx = cvs?.getContext && cvs.getContext('2d');
+    let data = Array.from({length:64}, ()=> Math.floor(Math.random()*100)+1);
+    function draw(){ if(!ctx) return; ctx.clearRect(0,0,cvs.width,cvs.height); const w = cvs.width / data.length; data.forEach((v,i)=>{ const h = (v/100)* (cvs.height-10); ctx.fillStyle = 'rgba(37,99,235,.85)'; ctx.fillRect(i*w+1, cvs.height - h, w-2, h); }); }
+    if(ctx){ draw(); document.getElementById('genData').onclick = ()=>{ data = Array.from({length:64}, ()=> Math.floor(Math.random()*100)+1); draw(); res('Ready'); }; }
+    const resEl = document.getElementById('sortResult');
+    const res = (t)=>{ if(resEl) resEl.textContent = t; };
+    function bubbleSort(arr){ const a=[...arr]; for(let i=0;i<a.length;i++){ for(let j=0;j<a.length-i-1;j++){ if(a[j]>a[j+1]){ [a[j],a[j+1]]=[a[j+1],a[j]]; } } } return a; }
+    function quickSort(a){ if(a.length<2) return a; const p=a[a.length>>1]; const lt=a.filter(x=>x<p); const eq=a.filter(x=>x===p); const gt=a.filter(x=>x>p); return [...quickSort(lt),...eq,...quickSort(gt)]; }
+    function timed(fn){ const t0=performance.now(); const out=fn(data); const t1=performance.now(); data=out; draw(); res(`${fn.name} ${ (t1-t0).toFixed(2) } ms`); }
+    document.getElementById('runBubble')?.addEventListener('click', ()=> timed(bubbleSort));
+    document.getElementById('runQuick')?.addEventListener('click', ()=> timed(quickSort));
+
+    // GITHUB ACTIVITY
+    const ghUser = 'maxeld1';
+    const ghList = document.getElementById('ghList');
+    const ghStatus = document.getElementById('ghStatus');
+    fetch(`https://api.github.com/users/${ghUser}/repos?sort=updated&per_page=6`)
+      .then(r=>r.ok?r.json():Promise.reject(r.status))
+      .then(repos=>{
+        if(!ghStatus||!ghList) return;
+        ghStatus.textContent = 'Latest repos';
+        ghList.innerHTML = repos.map(r=>`<li class='item' style='padding:10px'><strong>${r.name}</strong><br><span style='color:#475569;font-size:13px'>${r.language||'—'} • ★ ${r.stargazers_count} • Updated ${new Date(r.updated_at).toLocaleDateString()}</span><br><a href='${r.html_url}' target='_blank' rel='noopener'>Open ↗</a></li>`).join('');
+      })
+      .catch(()=>{ if(!ghStatus||!ghList) return; ghStatus.textContent='(Using demo data)'; ghList.innerHTML = `<li class='item' style='padding:10px'><strong>portfolio-site</strong><br><span style='color:#475569;font-size:13px'>HTML/CSS • ★ 3 • Updated recently</span></li>`; });
   </script>
 </body>
-</html>
 </html>
