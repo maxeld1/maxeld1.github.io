@@ -41,16 +41,18 @@
     .links a{padding:8px 12px;border-radius:999px}
     .links a:hover{background:rgba(37,99,235,.08)}
 
+    .container{max-width:1220px;margin:0 auto;padding:0 20px}
     main{max-width:1220px;margin:28px auto;padding:0 20px}
 
     /* HERO */
-    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
+    .hero{padding:8px 0}
+    .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
     .card{background:var(--surface);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
     .hero .card{padding:22px}
     .title{font-size:clamp(26px,4.4vw,42px);line-height:1.1;margin:0 0 8px}
     .subtitle{color:var(--muted);font-size:clamp(14px,2vw,16px);margin:0 0 12px}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff, #f9fbff);color:var(--text);font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff, #f9fbff);color:var(--text);font-weight:600;line-height:1;min-height:40px}
     .btn.primary{background:linear-gradient(180deg, rgba(37,99,235,.18), rgba(37,99,235,.10));border-color:rgba(37,99,235,.35)}
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 2px}
     .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:#fff;color:#0b3b86;font-size:12.5px}
@@ -62,10 +64,15 @@
 
     /* Sections */
     section{padding:18px 0}
+    .section-block{margin:26px 0}
     h2.section{font-size:20px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
     h2.section::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(37,99,235,.35), transparent)}
+    .section-head{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:20px}
+    .section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg, rgba(37,99,235,.35), transparent)}
 
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .grid-auto{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:16px}
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px,1fr));gap:16px}
     .col-4{grid-column:span 4}
     .col-6{grid-column:span 6}
     .col-8{grid-column:span 8}
@@ -76,112 +83,89 @@
     .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .meta .tag{font-size:12px;color:#0f172a;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px;background:#f8fafc}
 
-    /* Projects grid density */
-    #projects .grid > .col-6.item{grid-column:span 4}
-    @media (min-width:1400px){#projects .grid > .col-6.item{grid-column:span 3}}
-
-    /* Contact */
-    .contact-cta{position:sticky;bottom:16px;display:flex;gap:10px;justify-content:center;margin-top:14px}
-    .contact-cta .btn{box-shadow:0 8px 16px rgba(37,99,235,.18)}
-
-    /* Footer */
-    footer{border-top:1px solid var(--stroke);margin-top:28px;color:var(--muted)}
-    .foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 0}
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-      .avatar-ring{--sz:160px}
-      .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
-    }
-
-    /* Lift on hover + tighter grid */
-    #projects .grid > .col-6.item { grid-column: span 4; }
-    @media (min-width:1400px){ #projects .grid > .col-6.item { grid-column: span 3; } }
-    .item { transition: transform .2s ease, box-shadow .2s ease; }
-    .item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    
-    /* Section header accent */
-    h2.section{ display:flex; align-items:center; gap:10px; }
-    h2.section::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(37,99,235,.35), transparent); }
-
     /* Chips for modal and tags */
     .chips{display:flex;flex-wrap:wrap;gap:8px}
     .chip{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--stroke);font-size:12.5px;color:#0f172a}
     .tag{padding:4px 8px;border-radius:999px;border:1px solid var(--stroke);background:#f8fafc;font-size:12px;color:#0f172a}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .avatar-ring{--sz:160px}
+      .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
+    }
   </style>
+</head>
 </head>
 <body>
   <header>
-    <div><strong>Max Eldabbas</strong></div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav">
+      <div class="brand"><strong>Max Eldabbas</strong></div>
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
     <section class="hero">
-      <div class="card">
-        <div class="badges">
-          <span class="badge">🚀 Open to Software Engineer roles</span>
-          <span class="badge">📍 Philadelphia / Remote</span>
+      <div class="container hero-grid">
+        <div class="card">
+          <div class="badges">
+            <span class="badge">🚀 Open to Software Engineer roles</span>
+            <span class="badge">📍 Philadelphia / Remote</span>
+          </div>
+          <h1 class="title">Building data‑driven tools & accessible web apps</h1>
+          <p class="subtitle">Results‑driven developer with 3+ years of experience in Java, Python, and JavaScript across research and healthcare. MCIT @ Penn. I design for clarity and ship production code.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="#contact">Get in touch</a>
+            <a class="btn" href="resume_Max_Eldabbas.pdf">Download Résumé</a>
+          </div>
         </div>
-        <h1 class="title">Building data‑driven tools & accessible web apps</h1>
-        <p class="subtitle">Results‑driven developer with 3+ years of experience in Java, Python, and JavaScript across research and healthcare. MCIT @ Penn. I design for clarity and ship production code.</p>
-        <div class="cta">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn" href="#contact">Get in touch</a>
-          <a class="btn" href="Resume_Eldabbas_Max_2025.pdf">Download Résumé</a>
+        <div class="card avatar-wrap">
+          <div class="avatar-ring">
+            <img class="avatar" src="profile.jpg" alt="Profile picture of Max Eldabbas" loading="lazy">
+          </div>
         </div>
-      </div>
-      <div class="card avatar-wrap">
-        <div class="avatar-ring">
-          <img class="avatar" src="profile_img_max.jpg" alt="Profile picture of Max Eldabbas">
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="card">
-        <p>Results-driven software engineer with 3+ years of experience building data-driven systems and web interfaces in research and healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania. Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high-impact applications. Passionate about delivering elegant technical solutions to real-world problems that scale.</p>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid">
+    <section id="about" class="section-block">
+      <h2 class="section-head">About Me</h2>
+      <div class="card">
+        <p>Results‑driven software engineer with 3+ years of experience building data‑driven systems and web interfaces in research and healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania. Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high‑impact applications. Passionate about delivering elegant technical solutions to real‑world problems that scale.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="section-block">
+      <h2 class="section-head">Skills</h2>
+      <div class="grid-auto">
         <div class="card"><h3>Languages</h3><p>Java, Python, JavaScript, SQL, C, R, HTML, CSS</p></div>
-        <div class="card"><h3>Frameworks</h3><p>Node.js, basic React/Vue, N-tier architecture</p></div>
+        <div class="card"><h3>Frameworks</h3><p>Node.js, basic React/Vue, N‑tier architecture</p></div>
         <div class="card"><h3>Libraries & Tools</h3><p>pandas, NumPy, Matplotlib, Docker, Git, AWS, PyCharm, IntelliJ, LaTeX</p></div>
         <div class="card"><h3>Concepts</h3><p>RESTful APIs, cloud storage basics</p></div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2 class="section">Projects</h2>
-      <div id="projectGrid" class="grid"></div>
-    
+    <section id="projects" class="section-block">
+      <h2 class="section-head">Projects</h2>
+      <div id="projectGrid" class="project-grid"></div>
+
       <!-- Modal -->
-      <div id="projectModal" class="modal" aria-hidden="true"
-           style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-                  background:rgba(15,23,42,.45);backdrop-filter:blur(4px);padding:20px;z-index:60">
-        <div class="modal-card" role="dialog" aria-modal="true"
-             style="max-width:920px;width:100%;background:#fff;border:1px solid var(--stroke);
-                    border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;
-                      border-bottom:1px solid var(--stroke)">
+      <div id="projectModal" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.45);backdrop-filter:blur(4px);padding:20px;z-index:60">
+        <div class="modal-card" role="dialog" aria-modal="true" style="max-width:920px;width:100%;background:#fff;border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--stroke)">
             <h3 id="mTitle" style="margin:0;font-size:18px;color:#0f172a"></h3>
             <button id="mClose" class="btn" style="padding:6px 10px">Close</button>
           </div>
           <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding:16px">
             <div>
-              <img id="mImage" alt="Project preview" loading="lazy"
-                   style="width:100%;height:360px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);background:#f8fafc"/>
+              <img id="mImage" alt="Project preview" loading="lazy" style="width:100%;height:360px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);background:#f8fafc"/>
             </div>
             <div>
               <p id="mDesc" style="margin-top:0;color:#0f172a"></p>
@@ -193,45 +177,23 @@
       </div>
     </section>
 
-    <section id="experience">
-      <h2 class="section">Experience</h2>
-      <div class="grid">
-        <div class="col-12 card" style="padding:16px">
-          <div class="timeline">
-            <div class="t-item">
-              <h3>Technical Support Volunteer • Our Wave <span class="where">(Remote) — Feb 2025 – Present</span></h3>
-              <ul style="margin:6px 0 0 16px;color:#334155">
-                <li>Contributing with researchers/designers to build accessible, engaging web features prioritizing inclusion and trauma-informed design.</li>
-                <li>Developing responsive, accessible front-end components (HTML, CSS, JS).</li>
-              </ul>
-            </div>
-            <div class="t-item">
-              <h3>Lab Manager & Research Specialist • University of Pennsylvania <span class="where">(Philadelphia, PA) — May 2022 – Present</span></h3>
-              <ul style="margin:6px 0 0 16px;color:#334155">
-                <li>Led 20-person research team; ~20% improvement in research outcomes.</li>
-                <li>Java automation for Human Immunology Core (Excel/Word outputs), improving processing efficiency by ~50%.</li>
-                <li>Promoted to Lab Manager; documentation/ops/analytics improved lab efficiency by 30%.</li>
-              </ul>
-            </div>
-          </div>
+    <section id="experience" class="section-block">
+      <h2 class="section-head">Experience</h2>
+      <div class="grid-auto">
+        <div class="card">
+          <h3>Technical Support Volunteer • Our Wave <span class="where">(Remote) — Feb 2025 – Present</span></h3>
+          <ul style="margin:6px 0 0 16px;color:#334155">
+            <li>Contributing with researchers/designers to build accessible, engaging web features prioritizing inclusion and trauma‑informed design.</li>
+            <li>Developing responsive, accessible front‑end components (HTML, CSS, JS).</li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <section id="education" class="grid">
-      <div class="col-12 card" style="padding:16px">
-        <h2 class="section">Education</h2>
-        <div class="grid">
-          <div class="col-6 item">
-            <h3>University of Pennsylvania — M.S. Computer & Information Technology </h3>
-            <p>Computer Systems Programming; Data Structures & Software Design; Algorithms & Computation; Artificial Intelligence; Machine Learning; Bioinformatics.</p>
-            <p class="where">Philadelphia, PA</p>
-          </div>
-          <div class="col-6 item">
-            <h3>Pennsylvania State University — B.S. Biology</h3>
-            <p>Foundations in life sciences and quantitative analysis.</p>
-            <p class="where">State College, PA</p>
-          </div>
+        <div class="card">
+          <h3>Lab Manager & Research Specialist • University of Pennsylvania <span class="where">(Philadelphia, PA) — May 2022 – Present</span></h3>
+          <ul style="margin:6px 0 0 16px;color:#334155">
+            <li>Led 20‑person research team; ~20% improvement in research outcomes.</li>
+            <li>Java automation for Human Immunology Core (Excel/Word outputs), improving processing efficiency by ~50%.</li>
+            <li>Promoted to Lab Manager; documentation/ops/analytics improved lab efficiency by 30%.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -244,9 +206,25 @@
         <p>GitHub: <a href="https://github.com/maxeld1">github.com/maxeld1</a></p>
       </div>
     </section>
+      <section id="education" class="section-block">
+      <h2 class="section-head">Education</h2>
+      <div class="grid-auto">
+        <div class="card">
+          <h3>University of Pennsylvania — MCIT</h3>
+          <p>Computer Systems Programming; Data Structures & Software Design; Algorithms & Computation; Artificial Intelligence; Machine Learning; Bioinformatics.</p>
+          <p class="where">Philadelphia, PA</p>
+        </div>
+        <div class="card">
+          <h3>Pennsylvania State University — B.S. Biology</h3>
+          <p>Foundations in life sciences and quantitative analysis.</p>
+          <p class="where">State College, PA</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
+  <footer class="container">
     © <span id="year"></span> Max Eldabbas
   </footer>
 
@@ -292,7 +270,7 @@
   
     function cardHTML(p){
       const tags = (p.stack||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
-      return `<article class="col-6 item" role="button" tabindex="0" data-title="${p.title}">
+      return `<article class="item" role="button" tabindex="0" data-title="${p.title}">
         <h3 style="margin:0 0 4px">${p.title}</h3>
         <p style="margin:0;color:#334155">${p.desc.slice(0,130)}${p.desc.length>130?'…':''}</p>
         <div class="meta">${tags}<span class="tag">${p.year||''}</span></div>
@@ -325,4 +303,5 @@
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
   </script>
 </body>
+</html>
 </html>
