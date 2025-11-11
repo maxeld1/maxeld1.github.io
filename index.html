@@ -104,6 +104,11 @@
     /* Section header accent */
     h2.section{ display:flex; align-items:center; gap:10px; }
     h2.section::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(37,99,235,.35), transparent); }
+
+    /* Chips for modal and tags */
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--stroke);font-size:12.5px;color:#0f172a}
+    .tag{padding:4px 8px;border-radius:999px;border:1px solid var(--stroke);background:#f8fafc;font-size:12px;color:#0f172a}
   </style>
 </head>
 <body>
@@ -143,28 +148,17 @@
     <section id="about">
       <h2>About Me</h2>
       <div class="card">
-        <p>I am a Results-driven software engineer with 3+ years of experience building data-driven systems and web interfaces in research and
-          healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania.
-          Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high-impact
-          applications. Passionate about delivering elegant technical solutions to real-world problems that scale.</p>
+        <p>Results-driven software engineer with 3+ years of experience building data-driven systems and web interfaces in research and healthcare environments. Recently completed a Master’s in Computer and Information Technology at the University of Pennsylvania. Proficient in Java, JavaScript, Python, C, SQL, HTML, and CSS with a focus on building scalable, accessible, and high-impact applications. Passionate about delivering elegant technical solutions to real-world problems that scale.</p>
       </div>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
       <div class="grid">
-        <div class="card">
-          <h3>Languages</h3>
-          <p>Java, Python, JavaScript, SQL, C, R, HTML, CSS</p>
-        </div>
-        <div class="card">
-          <h3>Frameworks</h3>
-          <p>React, Node.js, N-tier architecture</p>
-        </div>
-        <div class="card">
-          <h3>Libraries & Tools</h3>
-          <p>Pandas, NumPy, Matplotlib, Docker, Git, AWS, PyCharm, LaTeX</p>
-        </div>
+        <div class="card"><h3>Languages</h3><p>Java, Python, JavaScript, SQL, C, R, HTML, CSS</p></div>
+        <div class="card"><h3>Frameworks</h3><p>Node.js, basic React/Vue, N-tier architecture</p></div>
+        <div class="card"><h3>Libraries & Tools</h3><p>pandas, NumPy, Matplotlib, Docker, Git, AWS, PyCharm, IntelliJ, LaTeX</p></div>
+        <div class="card"><h3>Concepts</h3><p>RESTful APIs, cloud storage basics</p></div>
       </div>
     </section>
 
@@ -173,15 +167,21 @@
       <div id="projectGrid" class="grid"></div>
     
       <!-- Modal -->
-      <div id="projectModal" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.45);backdrop-filter:blur(4px);padding:20px;z-index:60">
-        <div class="modal-card" role="dialog" aria-modal="true" style="max-width:920px;width:100%;background:#fff;border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--stroke)">
+      <div id="projectModal" class="modal" aria-hidden="true"
+           style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+                  background:rgba(15,23,42,.45);backdrop-filter:blur(4px);padding:20px;z-index:60">
+        <div class="modal-card" role="dialog" aria-modal="true"
+             style="max-width:920px;width:100%;background:#fff;border:1px solid var(--stroke);
+                    border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;
+                      border-bottom:1px solid var(--stroke)">
             <h3 id="mTitle" style="margin:0;font-size:18px;color:#0f172a"></h3>
             <button id="mClose" class="btn" style="padding:6px 10px">Close</button>
           </div>
           <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding:16px">
             <div>
-              <img id="mImage" alt="Project preview" style="width:100%;height:360px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);background:#f8fafc"/>
+              <img id="mImage" alt="Project preview" loading="lazy"
+                   style="width:100%;height:360px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);background:#f8fafc"/>
             </div>
             <div>
               <p id="mDesc" style="margin-top:0;color:#0f172a"></p>
@@ -193,19 +193,6 @@
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="grid">
-        <div class="card"><h3>Healing in Color</h3><p>Collaborated with Our Wave and Phoenix Gender-based Violence Lab, a Temple University research lab, to develop Healing in Color, an interactive virtual exhibit supporting LGBTQ+ survivors of harm–using JavaScript, CSS, and HTML.</p></div>
-        <div class="card"><h3>Laboratory Website</h3><p>Built interative lab website to host all lab processes and control links to important sites.</p></div>
-        <div class="card"><h3>Laboratory Automation</h3><p>Java tools for parsing unstructured data and automating document generation, improving efficiency by 50%.</p></div>
-        <div class="card"><h3>Cell Line Scheduler</h3><p>Built a cross-platform PyQt6 desktop app that automatically generates 293T cell split rotations with a 48-hour cadence, SunSat scheduling logic, fair role flipping after both groups complete a cycle, CSV/ICS export, and a modern UI</p></div>
-        <div class="card"><h3>OpenDataPhilly Data Analysis</h3><p>Built accessible interactive exhibit using HTML, CSS, and JS for Our Wave.</p></div>
-        <div class="card"><h3>Tweet Analyzer</h3><p>Developed an application that analyzes large-scale Twitter data, identifying tweets that regard instances of influenza per state and determining their geographic origin based on the coordinates associated with each tweet.</p></div>
-        <div class="card"><h3>Penn‑Shredder</h3><p>C shell with process control and runtime limits for secure task execution.</p></div>
-      </div>
-    </section>
-
     <section id="experience">
       <h2 class="section">Experience</h2>
       <div class="grid">
@@ -214,16 +201,16 @@
             <div class="t-item">
               <h3>Technical Support Volunteer • Our Wave <span class="where">(Remote) — Feb 2025 – Present</span></h3>
               <ul style="margin:6px 0 0 16px;color:#334155">
-                <li>Contribute cross-functionally with researchers and designers to build accessible, engaging web features that prioritize inclusion and trauma-informed design.</li>
-                <li>Develop responsive, accessible front-end components using HTML, CSS, and JavaScript.</li>
+                <li>Contributing with researchers/designers to build accessible, engaging web features prioritizing inclusion and trauma-informed design.</li>
+                <li>Developing responsive, accessible front-end components (HTML, CSS, JS).</li>
               </ul>
             </div>
             <div class="t-item">
               <h3>Lab Manager & Research Specialist • University of Pennsylvania <span class="where">(Philadelphia, PA) — May 2022 – Present</span></h3>
               <ul style="margin:6px 0 0 16px;color:#334155">
-                <li>Lead a cross-functional team of 20 researchers to advance CAR T cell therapy for autoimmune diseases, achieving ~20% improvement in research outcomes.</li>
-                <li>Built Java apps that automate parsing and analysis (Excel/Word outputs), improving processing efficiency by ~50%.</li>
-                <li>Promoted to Lab Manager; documented operations and analytics, improving lab efficiency by 30%.</li>
+                <li>Led 20-person research team; ~20% improvement in research outcomes.</li>
+                <li>Java automation for Human Immunology Core (Excel/Word outputs), improving processing efficiency by ~50%.</li>
+                <li>Promoted to Lab Manager; documentation/ops/analytics improved lab efficiency by 30%.</li>
               </ul>
             </div>
           </div>
@@ -237,7 +224,7 @@
         <div class="grid">
           <div class="col-6 item">
             <h3>University of Pennsylvania — MCIT</h3>
-            <p>Courses: Computer Systems Programming, Data Structures & Software Design, Algorithms & Computation, Artificial Intelligence, Machine Learning, Bioinformatics.</p>
+            <p>Computer Systems Programming; Data Structures & Software Design; Algorithms & Computation; Artificial Intelligence; Machine Learning; Bioinformatics.</p>
             <p class="where">Philadelphia, PA</p>
           </div>
           <div class="col-6 item">
@@ -266,51 +253,32 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Projects pulled from your résumé
     const PROJECTS = [
-      {
-        title: 'Cell Line Scheduler',
-        year: '2025',
-        stack: ['Python','PyQt6','CSV/ICS'],
-        desc: 'Cross-platform desktop app that automatically generates 293T cell split rotations with a 48-hour cadence, CSV/ICS export, and a modern UI. Includes set scheduling logic and fair role flipping after cycles.',
-        image: 'project_cell_line.jpg'
-      },
-      {
-        title: 'Healing in Color — Interactive Exhibit',
-        year: '2025',
-        stack: ['HTML','CSS','JavaScript'],
-        desc: 'Interactive virtual exhibit for LGBTQ+ survivors, built with accessibility best practices and performance in mind.',
-        image: 'project_healing_in_color.jpg',
-        links: [{label:'Live site', href:'https://discover.ourwave.org/exhibit/healing-in-color'}]
-      },
-      {
-        title: 'Penn-Shredder (Custom Shell)',
-        year: '2024',
-        stack: ['C','Systems'],
-        desc: 'Custom shell to manage process execution with runtime limits, dual-stage pipelines, and redirection for efficient task processing.',
-        image: 'project_shell.jpg'
-      },
-      {
-        title: 'OpenDataPhilly Data Analysis',
-        year: '2024',
-        stack: ['Java','CSV','JSON'],
-        desc: 'Java app that ingests messy CSV/JSON datasets, cleans them, and computes demographic and real-estate metrics. Includes parsers/validators for inconsistent data.',
-        image: 'project_odp.jpg'
-      },
-      {
-        title: 'Laboratory Automation Program',
-        year: '2024',
-        stack: ['Java','Excel','Word'],
-        desc: 'Java tooling to parse unstructured order data, generate Word/Excel artifacts, and automate calculations — improving throughput by ~50%.',
-        image: 'project_lab_auto.jpg'
-      },
-      {
-        title: 'Tweet Analyzer',
-        year: '2024',
-        stack: ['Java','N-tier','Singleton'],
-        desc: 'Analyzes large-scale Twitter data to identify flu-related content by state; determines geographic origin from coordinates.',
-        image: 'project_tweet.jpg'
-      }
+      { title:'Cell Line Scheduler', year:'2025',
+        stack:['Python','PyQt6','CSV/ICS'],
+        desc:'Cross-platform desktop app that generates 293T cell split rotations with a 48-hour cadence, CSV/ICS export, Sun/Sat scheduling logic, and fair role flipping.',
+        image:'project_cell_line.jpg' },
+      { title:'Healing in Color — Interactive Exhibit', year:'2025',
+        stack:['HTML','CSS','JavaScript'],
+        desc:'Interactive virtual exhibit for LGBTQ+ survivors built for accessibility and performance.',
+        image:'project_healing_in_color.jpg',
+        links:[{label:'Live site', href:'https://discover.ourwave.org/exhibit/healing-in-color'}] },
+      { title:'Penn-Shredder (Custom Shell)', year:'2024',
+        stack:['C','Systems'],
+        desc:'Custom shell with runtime limits, dual-stage pipelines, and redirection.',
+        image:'project_shell.jpg' },
+      { title:'OpenDataPhilly Data Analysis', year:'2024',
+        stack:['Java','CSV','JSON'],
+        desc:'Java app that ingests/cleans OpenDataPhilly datasets and computes demographic/real-estate metrics.',
+        image:'project_odp.jpg' },
+      { title:'Laboratory Automation Program', year:'2024',
+        stack:['Java','Excel','Word'],
+        desc:'Parses unstructured order data; auto-generates Word/Excel; automates calculations (~50% throughput gain).',
+        image:'project_lab_auto.jpg' },
+      { title:'Tweet Analyzer', year:'2024',
+        stack:['Java','N-tier','Singleton'],
+        desc:'Identifies flu-related tweets by state; infers geography from coordinates.',
+        image:'project_tweet.jpg' }
     ];
   
     const grid = document.getElementById('projectGrid');
@@ -337,16 +305,13 @@
       mDesc.textContent  = p.desc;
       mImage.src = p.image || '';
       mImage.style.display = p.image ? 'block':'none';
-      mTags.innerHTML = (p.stack||[]).map(t=>`<span class='chip'>${t}</span>`).join('');
+      mTags.innerHTML  = (p.stack||[]).map(t=>`<span class='chip'>${t}</span>`).join('');
       mLinks.innerHTML = (p.links||[]).map(l=>`<a class='chip' href='${l.href}' target='_blank' rel='noopener'>${l.label} ↗</a>`).join('');
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
+      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false');
     }
     grid.addEventListener('click', e=>{
-      const card = e.target.closest('[data-title]');
-      if(!card) return;
-      const p = PROJECTS.find(x=>x.title===card.getAttribute('data-title'));
-      if(p) openModal(p);
+      const card = e.target.closest('[data-title]'); if(!card) return;
+      const p = PROJECTS.find(x=>x.title===card.getAttribute('data-title')); if(p) openModal(p);
     });
     grid.addEventListener('keydown', e=>{
       if(e.key==='Enter'){
