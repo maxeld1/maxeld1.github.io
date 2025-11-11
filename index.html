@@ -90,6 +90,45 @@
             .hero{grid-template-columns:1fr}
             .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
         }
+
+        /* ===== Light + Dense overrides  ===== */
+        :root{
+          --bg:#f7fafc; --text:#0f172a; --muted:#475569; --card:#ffffff;
+          --stroke:rgba(2,6,23,.08); --accent:#0ea5e9; --accent-strong:#0284c7;
+          --chip:#eef2f7; --shadow:0 6px 20px rgba(2,6,23,.06); --radius:14px;
+        }
+        body{ background:linear-gradient(180deg,#ffffff,#f7fafc); color:var(--text); }
+        .container{ max-width:1280px; padding:18px; }
+        header{ background:rgba(255,255,255,.86); border-bottom:1px solid var(--stroke); }
+        .nav{ padding:10px 0; gap:12px; }
+        .pill{ background:#fff; padding:6px 10px; gap:6px; border:1px solid var(--stroke); }
+        .hero{ padding:24px 0; gap:18px; grid-template-columns:1.1fr .9fr; }
+        .hero .card{ padding:16px; }
+        .title{ font-size:clamp(24px,4vw,34px); margin:0 0 6px; }
+        .subtitle{ color:var(--muted); font-size:clamp(14px,2vw,16px); margin:0 0 10px; }
+        .cta{ gap:8px; margin-top:10px; }
+        .btn{ background:#fff; border:1px solid var(--stroke); padding:10px 12px; border-radius:10px; gap:8px; }
+        .btn.primary{ background:linear-gradient(180deg,rgba(14,165,233,.18),rgba(14,165,233,.10)); border-color:rgba(14,165,233,.35); }
+        section{ padding:16px 0; }
+        .grid{ gap:14px; }
+        .item{ background:#fff; padding:14px; border-radius:12px; border:1px solid var(--stroke); }
+        .prose p{ color:#0f172a; margin:0 0 8px; }
+        .chips{ gap:6px; }
+        .chip{ background:var(--chip); border:1px solid var(--stroke); padding:4px 8px; font-size:12px; color:#0f172a; }
+        /* Make more fit on screen: project cards 3-across on lg screens */
+        #projects .grid > .col-6.item { grid-column: span 4; }
+        /* Tighten Experience timeline spacing */
+        .timeline{ padding-left:18px; }
+        .t-item{ margin:0 0 10px; }
+        .t-item h3{ font-size:14.5px; }
+        .item h3{ font-size:15px; margin:0 0 4px; }
+        .item p{ font-size:14px; }
+        /* Smaller section headers */
+        h2.section{ font-size:19px; margin:0 0 12px; }
+        /* Compact footer */
+        .foot{ padding:12px 0; }
+        /* Mobile remains single column */
+        @media (max-width:900px){ .hero{ grid-template-columns:1fr; } }
     </style>
 </head>
 <body>
