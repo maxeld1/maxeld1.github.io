@@ -94,6 +94,16 @@
       .avatar-ring{--sz:160px}
       .col-8,.col-6,.col-4,.col-12{grid-column:span 12}
     }
+
+    /* Lift on hover + tighter grid */
+    #projects .grid > .col-6.item { grid-column: span 4; }
+    @media (min-width:1400px){ #projects .grid > .col-6.item { grid-column: span 3; } }
+    .item { transition: transform .2s ease, box-shadow .2s ease; }
+    .item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    
+    /* Section header accent */
+    h2.section{ display:flex; align-items:center; gap:10px; }
+    h2.section::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(37,99,235,.35), transparent); }
   </style>
 </head>
 <body>
