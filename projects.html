@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Max Eldabbas</title>
+  <meta name="description" content="Project portfolio of Max Eldabbas featuring backend systems, automation, and data-focused applications." />
+  <meta name="theme-color" content="#0d5ed9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts/includes.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+</head>
+<body data-page="projects">
+  <div class="page-shell">
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-title">
+        <div class="container" data-reveal>
+          <h1>Selected Projects</h1>
+          <p>Hands-on engineering work across automation, systems, and interactive experiences. Filter by stack to scan quickly.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="filters" data-reveal>
+            <div id="projectFilters"></div>
+            <button id="clearFilter" type="button" class="btn btn-ghost">Show all</button>
+          </div>
+
+          <div class="project-list">
+            <article class="project-card" data-stack="Python,PyQt6,CSV/ICS" data-reveal>
+              <h3>Cell Line Scheduler</h3>
+              <p>Desktop app that automates 293T split rotations on a strict 48-hour cadence with CSV and ICS export support.</p>
+              <div class="stack"><span>Python</span><span>PyQt6</span><span>CSV/ICS</span></div>
+              <div class="project-footer"><strong>2025</strong></div>
+            </article>
+
+            <article class="project-card" data-stack="HTML,CSS,JavaScript" data-reveal>
+              <h3>Healing in Color</h3>
+              <p>Accessible virtual exhibit built for LGBTQ+ survivors with responsive UI and strong performance characteristics.</p>
+              <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <div class="project-footer">
+                <strong>2025</strong>
+                <a class="btn btn-light" href="https://discover.ourwave.org/exhibit/healing-in-color" target="_blank" rel="noopener">Live Site</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-stack="C,Systems" data-reveal>
+              <h3>Penn-Shredder Shell</h3>
+              <p>Custom shell implementation with runtime limits, dual-stage pipelines, and robust redirection behavior.</p>
+              <div class="stack"><span>C</span><span>Systems</span></div>
+              <div class="project-footer"><strong>2024</strong></div>
+            </article>
+
+            <article class="project-card" data-stack="Java,CSV,JSON" data-reveal>
+              <h3>OpenDataPhilly Analysis</h3>
+              <p>Java application that ingests public datasets, cleans records, and computes demographic and real-estate metrics.</p>
+              <div class="stack"><span>Java</span><span>CSV</span><span>JSON</span></div>
+              <div class="project-footer"><strong>2024</strong></div>
+            </article>
+
+            <article class="project-card" data-stack="Java,Excel,Word" data-reveal>
+              <h3>Laboratory Automation Program</h3>
+              <p>Program that parses unstructured order data and generates formatted Word/Excel outputs with automated calculations.</p>
+              <div class="stack"><span>Java</span><span>Excel</span><span>Word</span></div>
+              <div class="project-footer"><strong>2024</strong></div>
+            </article>
+
+            <article class="project-card" data-stack="Java,N-tier,Architecture" data-reveal>
+              <h3>Tweet Analyzer</h3>
+              <p>N-tier Java app that identifies flu-related tweets by state and infers user location from geographic metadata.</p>
+              <div class="stack"><span>Java</span><span>N-tier</span><span>Architecture</span></div>
+              <div class="project-footer"><strong>2024</strong></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+  </div>
+</body>
+</html>
