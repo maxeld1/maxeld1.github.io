@@ -80,10 +80,69 @@ function bootProjectFilters() {
   });
 }
 
+function bootProjectPreviews() {
+  const cards = Array.from(document.querySelectorAll('.project-card'));
+  if (!cards.length) return;
+
+  const closeCard = (card) => {
+    const panel = card.querySelector('.project-preview');
+    const button = card.querySelector('.project-preview-toggle');
+    const video = panel ? panel.querySelector('video') : null;
+    if (panel) panel.hidden = true;
+    if (button) button.setAttribute('aria-expanded', 'false');
+    if (video) video.pause();
+  };
+
+  cards.forEach((card) => {
+    const button = card.querySelector('.project-preview-toggle');
+    const panel = card.querySelector('.project-preview');
+    if (!button || !panel || button.dataset.bound === 'true') return;
+    button.dataset.bound = 'true';
+
+    const previewSrc = card.dataset.preview;
+    const previewPoster = card.dataset.previewPoster;
+    const inner = panel.querySelector('.project-preview-inner');
+    const message = panel.querySelector('.project-preview-message');
+
+    if (!previewSrc) {
+      button.setAttribute('aria-disabled', 'true');
+      button.title = 'Add a data-preview attribute to enable video previews.';
+      return;
+    }
+
+    if (message) message.remove();
+
+    const video = document.createElement('video');
+    video.src = previewSrc;
+    video.controls = true;
+    video.muted = true;
+    video.playsInline = true;
+    if (previewPoster) video.poster = previewPoster;
+    inner.appendChild(video);
+
+    button.addEventListener('click', () => {
+      const isOpen = !panel.hidden;
+      cards.forEach((otherCard) => {
+        if (otherCard !== card) closeCard(otherCard);
+      });
+
+      if (isOpen) {
+        closeCard(card);
+        return;
+      }
+
+      panel.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      video.play().catch(() => {});
+    });
+  });
+}
+
 function initPage() {
   bootSharedUI();
   bootContactActions();
   bootProjectFilters();
+  bootProjectPreviews();
 }
 
 document.addEventListener('partials:loaded', initPage);

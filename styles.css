@@ -433,6 +433,38 @@ img {
   font-size: 0.87rem;
 }
 
+.project-preview-toggle[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.project-preview {
+  margin-top: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(16, 35, 67, 0.08);
+}
+
+.project-preview-inner {
+  padding: 0.7rem;
+}
+
+.project-preview video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  background: #0b1d34;
+}
+
+.project-preview-message {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 .timeline {
   display: grid;
   gap: 0.9rem;
